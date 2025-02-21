@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.caryan.volunteerregistersys.dao.UserMapper">
+
+    <!-- 插入用户 -->
+    <insert id="insertUser" parameterType="me.caryan.volunteerregistersys.entity.Request.RegisterUserVo">
+        INSERT INTO user (tel, name , password, age, gender, unit, job_id, living_address, registered_address_id, is_leader,
+                          join_date)
+        VALUES (#{tel}, #{name} , #{password}, #{age}, #{gender}, #{unit}, #{jobId}, #{livingAddress}, #{registeredAddressId},
+                #{isLeader}, #{joinDate})
+    </insert>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUserById" parameterType="Long">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+    <!-- 根据用户id查询用户 -->
+    <select id="selectUserById" parameterType="Long" resultType="me.caryan.volunteerregistersys.entity.po.User">
+        SELECT id, name , tel, password, age, gender, unit, job_id, living_address, registered_address_id, is_leader, join_date
+        FROM user WHERE id = #{id}
+    </select>
+
+    <!-- 根据用户电话查询用户 -->
+    <select id="selectUserByTel" parameterType="String" resultType="me.caryan.volunteerregistersys.entity.po.User">
+        SELECT id, name , tel, password, age, gender, unit, job_id, living_address, registered_address_id, is_leader, join_date
+        FROM user WHERE tel = #{tel}
+    </select>
+
+    <!-- 根据用户电话查询用户数量 -->
+    <select id="countByTel" parameterType="String" resultType="Long">
+        SELECT COUNT(*) FROM user WHERE tel = #{tel}
+    </select>
+
+    <!-- 更新用户信息 -->
+    <update id="updateUserById" parameterType="me.caryan.volunteerregistersys.entity.po.User">
+        UPDATE user
+        SET tel = #{tel},
+            name = #{name},
+            password = #{password},
+            age = #{age},
+            gender = #{gender},
+            unit = #{unit},
+            job_id = #{jobId},
+            living_address = #{livingAddress},
+            registered_address_id = #{registeredAddressId},
+            is_leader = #{isLeader},
+            join_date = #{joinDate},
+        WHERE id = #{id}
+    </update>
+
+</mapper>
