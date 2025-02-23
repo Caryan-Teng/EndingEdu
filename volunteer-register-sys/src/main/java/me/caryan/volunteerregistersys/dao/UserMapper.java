@@ -1,6 +1,6 @@
 package me.caryan.volunteerregistersys.dao;
 
-import me.caryan.volunteerregistersys.entity.Request.RegisterUserVo;
+import me.caryan.volunteerregistersys.entity.request.RegisterUserVo;
 import me.caryan.volunteerregistersys.entity.po.User;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -1,8 +1,7 @@
-package me.caryan.volunteerregistersys.entity.Request;
+package me.caryan.volunteerregistersys.entity.request;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

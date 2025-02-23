@@ -6,7 +6,7 @@
 <mapper namespace="me.caryan.volunteerregistersys.dao.UserMapper">
 
     <!-- 插入用户 -->
-    <insert id="insertUser" parameterType="me.caryan.volunteerregistersys.entity.Request.RegisterUserVo">
+    <insert id="insertUser" parameterType="me.caryan.volunteerregistersys.entity.request.RegisterUserVo">
         INSERT INTO user (tel, name , password, age, gender, unit, job_id, living_address, registered_address_id, is_leader,
                           join_date)
         VALUES (#{tel}, #{name} , #{password}, #{age}, #{gender}, #{unit}, #{jobId}, #{livingAddress}, #{registeredAddressId},

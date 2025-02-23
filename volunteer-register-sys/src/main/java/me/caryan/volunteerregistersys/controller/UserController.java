@@ -2,8 +2,8 @@ package me.caryan.volunteerregistersys.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import me.caryan.volunteerregistersys.entity.Request.LoginUserVo;
-import me.caryan.volunteerregistersys.entity.Request.RegisterUserVo;
+import me.caryan.volunteerregistersys.entity.request.LoginUserVo;
+import me.caryan.volunteerregistersys.entity.request.RegisterUserVo;
 import me.caryan.volunteerregistersys.entity.po.User;
 import me.caryan.volunteerregistersys.entity.response.ResultVo;
 import me.caryan.volunteerregistersys.service.UserService;

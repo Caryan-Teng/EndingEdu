@@ -1,6 +1,6 @@
 package me.caryan.volunteerregistersys.service;
 
-import me.caryan.volunteerregistersys.entity.Request.RegisterUserVo;
+import me.caryan.volunteerregistersys.entity.request.RegisterUserVo;
 import me.caryan.volunteerregistersys.entity.po.User;
 
 public interface UserService {

@@ -1,7 +1,7 @@
 package me.caryan.volunteerregistersys.service.impl;
 
 import me.caryan.volunteerregistersys.dao.UserMapper;
-import me.caryan.volunteerregistersys.entity.Request.RegisterUserVo;
+import me.caryan.volunteerregistersys.entity.request.RegisterUserVo;
 import me.caryan.volunteerregistersys.entity.po.User;
 import me.caryan.volunteerregistersys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
