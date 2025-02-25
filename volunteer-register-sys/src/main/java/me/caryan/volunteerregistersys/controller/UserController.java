@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.sql.Date;
 
-@Validated
+
 @RestController
 @Api(tags = "用户信息")
 public class UserController {
@@ -29,7 +29,7 @@ public class UserController {
      */
     @PostMapping("/register")
     @ApiOperation(value = "注册用户")
-    public ResultVo<String> registerUser(@RequestBody RegisterUserVo registerUserVo) {
+    public ResultVo<String> registerUser(@RequestBody @Valid RegisterUserVo registerUserVo) {
         String email = registerUserVo.getEmail();
         ResultVo<String> response = new ResultVo<         >();
         if (email.length() == 11 && email.matches("^1[3-9]\\d{9}$")) {
@@ -54,7 +54,7 @@ public class UserController {
 
     @PostMapping("/login")
     @ApiOperation(value = "用户登录")
-    public ResultVo<User> loginUser(@RequestBody LoginUserVo loginUserVo) {
+    public ResultVo<User> loginUser(@RequestBody @Valid LoginUserVo loginUserVo) {
         ResultVo<User> response = new ResultVo<>();
         String email = loginUserVo.getEmail();
         String password = loginUserVo.getPassword();

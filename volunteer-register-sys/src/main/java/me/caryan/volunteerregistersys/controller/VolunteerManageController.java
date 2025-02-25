@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.sql.Date;
 
-@Validated
+
 @RestController("/volunteer/leader")
 @Api(tags = "志愿活动管理")
 public class VolunteerManageController {
@@ -26,7 +26,7 @@ public class VolunteerManageController {
     private UserService userService;
     @ApiOperation(value = "创建志愿活动")
     @PostMapping("/insert")
-    public ResultVo<Volunteer> createVolunteer(@RequestBody CreateVolunteerVo newVolunteer){
+    public ResultVo<Volunteer> createVolunteer(@RequestBody @Valid CreateVolunteerVo newVolunteer){
         ResultVo<Volunteer> response = new ResultVo<>();
         if(volunteerService.selectVolunteerByName(newVolunteer.getVolunteerName())!=null){
             response.setCode(500);

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Validated
+
 @RestController("/register")
 @Api(tags = "用户验证码")
 public class UserPassController {
@@ -45,7 +45,7 @@ public class UserPassController {
     }
     @PostMapping("/checkPass")
     @ApiOperation(value = "验证验证码")
-    public ResultVo<String> checkPass(@RequestBody UserPassVo userPassVo){
+    public ResultVo<String> checkPass(@RequestBody @Valid UserPassVo userPassVo){
         ResultVo<String> resultVo = new ResultVo<>();
         if(userPassService.selectPassByEmail(userPassVo.getEmail()).equals(userPassVo.getPass())){
             resultVo.setCode(200);
