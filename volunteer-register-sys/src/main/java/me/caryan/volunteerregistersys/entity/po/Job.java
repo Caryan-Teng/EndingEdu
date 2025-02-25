@@ -20,4 +20,7 @@ public class Job {
     @ApiModelProperty(value = "职业名称")
     @NotBlank
     private String jobName;
+    @ApiModelProperty(value = "职业id编号")
+    @NotBlank
+    private String jobId;
 }

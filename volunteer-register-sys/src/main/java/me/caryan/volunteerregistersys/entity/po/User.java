@@ -21,11 +21,11 @@ public class User {
     @ApiModelProperty(value = "用户id主键")
     private Long id;
     /**
-     * 电话
+     * 邮箱
      */
-    @ApiModelProperty(value = "电话")
-    @NotBlank(message = "登录电话不能为空")
-    private String tel;
+    @ApiModelProperty(value = "邮箱地址")
+    @NotBlank(message = "登录邮箱不能为空")
+    private String email;
     /**
      * 密码
      */

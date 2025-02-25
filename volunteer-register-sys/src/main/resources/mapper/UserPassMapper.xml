@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.caryan.volunteerregistersys.dao.UserPassMapper">
+
+    <insert id="insertPass" parameterType="String">
+        INSERT INTO user_pass (email, pass) VALUES (#{email}, #{pass})
+    </insert>
+
+    <select id="selectPassByEmail" parameterType="String" resultType="String">
+        SELECT pass FROM user_pass WHERE email = #{email}
+    </select>
+
+    <delete id="deletePassByEmail" parameterType="String">
+        DELETE FROM user_pass WHERE email = #{email}
+    </delete>
+
+</mapper>

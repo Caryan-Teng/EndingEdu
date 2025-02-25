@@ -26,16 +26,16 @@ public interface UserMapper {
     User selectUserById(Long id);
     /**
      * 根据用户电话查询用户
-     * @param tel 用户电话
+     * @param email 用户电话
      * @return 查询到的用户类
      */
-    User selectUserByTel(String tel);
+    User selectUserByEmail(String email);
     /**
      * 根据用户电话查询用户数量，用于验证是否重复注册
-     * @param tel 用户电话
+     * @param email 用户邮箱
      * @return 查询到的用户数量
      */
-    Long countByTel(String tel);
+    Long countByEmail(String email);
     /**
      * 更新用户信息
      * @param updatedUser 用户类

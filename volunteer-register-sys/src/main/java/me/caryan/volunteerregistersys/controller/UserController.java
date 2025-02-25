@@ -27,13 +27,13 @@ public class UserController {
     @PostMapping("/register")
     @ApiOperation(value = "注册用户")
     public ResultVo<String> registerUser(@RequestBody RegisterUserVo registerUserVo) {
-        String tel = registerUserVo.getTel();
-        ResultVo response = new ResultVo();
-        if (tel.length() == 11 && tel.matches("^1[3-9]\\d{9}$")) {
-            if (service.countByTel(tel) == 0) {
+        String email = registerUserVo.getEmail();
+        ResultVo<String> response = new ResultVo<         >();
+        if (email.length() == 11 && email.matches("^1[3-9]\\d{9}$")) {
+            if (service.countByEmail(email) == 0) {
                 response.setCode(200);
                 response.setMessage("注册成功");
-                response.setData(tel);
+                response.setData(email);
                 registerUserVo.setJoinDate(new Date(System.currentTimeMillis()));
                 service.insertUser(registerUserVo);
                 return response;
@@ -52,10 +52,10 @@ public class UserController {
     @PostMapping("/login")
     @ApiOperation(value = "用户登录")
     public ResultVo<User> loginUser(@RequestBody LoginUserVo loginUserVo) {
-        ResultVo<User> response = new ResultVo<User>();
-        String tel = loginUserVo.getTel();
+        ResultVo<User> response = new ResultVo<>();
+        String email = loginUserVo.getEmail();
         String password = loginUserVo.getPassword();
-        User user = service.selectUserByTel(tel);
+        User user = service.selectUserByEmail(email);
         if(user==null){
             response.setCode(501);
             response.setMessage("该电话号码不存在");

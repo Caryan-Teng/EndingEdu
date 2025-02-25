@@ -17,11 +17,11 @@ import java.sql.Date;
 public class RegisterUserVo {
 
     /**
-     * 电话
+     * 邮箱
      */
-    @ApiModelProperty(value = "电话")
-    @NotBlank
-    private String tel;
+    @ApiModelProperty(value = "邮箱地址")
+    @NotBlank(message = "登录邮箱不能为空")
+    private String email;
     /**
      * 密码
      */

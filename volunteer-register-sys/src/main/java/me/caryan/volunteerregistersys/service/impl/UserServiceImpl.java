@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Long insertUser(RegisterUserVo newUser) {
-        if(mapper.countByTel(newUser.getTel())>=1){
+        if(mapper.countByEmail(newUser.getEmail())>=1){
             return 0L;
         }else{
             return mapper.insertUser(newUser);
@@ -35,17 +35,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectUserByTel(String tel) {
-        return mapper.selectUserByTel(tel);
+    public User selectUserByEmail(String email) {
+        return mapper.selectUserByEmail(email);
     }
 
     @Override
-    public Long countByTel(String tel) {
-        return mapper.countByTel(tel);
+    public Long countByEmail(String email) {
+        return mapper.countByEmail(email);
     }
 
     @Override
     public Integer updateUserById(User updatedUser) {
         return mapper.updateUserById(updatedUser);
     }
+
 }

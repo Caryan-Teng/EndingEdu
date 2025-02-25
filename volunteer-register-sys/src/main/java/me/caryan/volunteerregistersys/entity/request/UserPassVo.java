@@ -9,20 +9,14 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Api(tags = "登录用户Vo")
-public class LoginUserVo {
-    /**
-     * 邮箱
-     */
+@NoArgsConstructor
+@Api(tags = "用户邮箱和验证码vo")
+public class UserPassVo {
+    @NotBlank(message = "邮箱地址不能为空")
     @ApiModelProperty(value = "邮箱地址")
-    @NotBlank(message = "登录邮箱不能为空")
     private String email;
-    /**
-     * 登录密码
-     */
-    @NotBlank(message = "登录密码不能为空")
-    @ApiModelProperty(value = "登录电话")
-    private String password;
+    @NotBlank(message = "验证码不能为空")
+    @ApiModelProperty(value = "验证码")
+    private String pass;
 }

@@ -7,9 +7,9 @@
 
     <!-- 插入用户 -->
     <insert id="insertUser" parameterType="me.caryan.volunteerregistersys.entity.request.RegisterUserVo">
-        INSERT INTO user (tel, name , password, age, gender, unit, job_id, living_address, registered_address_id, is_leader,
+        INSERT INTO user (email, name , password, age, gender, unit, job_id, living_address, registered_address_id, is_leader,
                           join_date)
-        VALUES (#{tel}, #{name} , #{password}, #{age}, #{gender}, #{unit}, #{jobId}, #{livingAddress}, #{registeredAddressId},
+        VALUES (#{email}, #{name} , #{password}, #{age}, #{gender}, #{unit}, #{jobId}, #{livingAddress}, #{registeredAddressId},
                 #{isLeader}, #{joinDate})
     </insert>
 
@@ -20,25 +20,25 @@
 
     <!-- 根据用户id查询用户 -->
     <select id="selectUserById" parameterType="Long" resultType="me.caryan.volunteerregistersys.entity.po.User">
-        SELECT id, name , tel, password, age, gender, unit, job_id, living_address, registered_address_id, is_leader, join_date
+        SELECT id, name , email, password, age, gender, unit, job_id, living_address, registered_address_id, is_leader, join_date
         FROM user WHERE id = #{id}
     </select>
 
     <!-- 根据用户电话查询用户 -->
-    <select id="selectUserByTel" parameterType="String" resultType="me.caryan.volunteerregistersys.entity.po.User">
-        SELECT id, name , tel, password, age, gender, unit, job_id, living_address, registered_address_id, is_leader, join_date
-        FROM user WHERE tel = #{tel}
+    <select id="selectUserByEmail" parameterType="String" resultType="me.caryan.volunteerregistersys.entity.po.User">
+        SELECT id, name , email, password, age, gender, unit, job_id, living_address, registered_address_id, is_leader, join_date
+        FROM user WHERE email = #{email}
     </select>
 
     <!-- 根据用户电话查询用户数量 -->
-    <select id="countByTel" parameterType="String" resultType="Long">
-        SELECT COUNT(*) FROM user WHERE tel = #{tel}
+    <select id="countByEmail" parameterType="String" resultType="Long">
+        SELECT COUNT(*) FROM user WHERE email = #{email}
     </select>
 
     <!-- 更新用户信息 -->
     <update id="updateUserById" parameterType="me.caryan.volunteerregistersys.entity.po.User">
         UPDATE user
-        SET tel = #{tel},
+        SET email = #{email},
             name = #{name},
             password = #{password},
             age = #{age},
