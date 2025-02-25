@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @Api(tags = "用户验证码")
 public class UserPass {
     @ApiModelProperty(value = "用户验证码id主键")
-    private Integer id;
+    private Long id;
     @NotBlank(message = "邮箱地址不能为空")
     @ApiModelProperty(value = "邮箱地址")
     private String email;

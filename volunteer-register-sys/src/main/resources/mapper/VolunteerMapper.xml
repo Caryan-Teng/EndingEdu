@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.caryan.volunteerregistersys.dao.VolunteerMapper">
+
+    <!-- 插入一个新的志愿活动记录 -->
+    <insert id="insertVolunteer" parameterType="me.caryan.volunteerregistersys.entity.po.Volunteer">
+        INSERT INTO volunteer (id, volunteer_name, is_begin, is_end, volunteer_info, create_date, max_participants, current_participants, checked_participants, leader_name)
+        VALUES (#{id}, #{volunteerName}, #{isBegin}, #{isEnd}, #{volunteerInfo}, #{createDate}, #{maxParticipants}, #{currentParticipants}, #{checkedParticipants}, #{leaderName})
+    </insert>
+
+    <!-- 根据志愿活动的ID删除志愿活动记录 -->
+    <delete id="deleteVolunteerByName" parameterType="String">
+        DELETE FROM volunteer WHERE volunteer_name = #{volunteerName}
+    </delete>
+
+    <!-- 根据志愿活动的ID更新志愿活动记录 -->
+    <update id="updateVolunteerByName" parameterType="me.caryan.volunteerregistersys.entity.po.Volunteer">
+        UPDATE volunteer
+        SET volunteer_name = #{volunteerName},
+            is_begin = #{isBegin},
+            is_end = #{isEnd},
+            volunteer_info = #{volunteerInfo},
+            create_date = #{createDate},
+            max_participants = #{maxParticipants},
+            current_participants = #{currentParticipants},
+            checked_participants = #{checkedParticipants},
+            leader_name = #{leaderName}
+        WHERE volunteer_name = #{volunteerName}
+    </update>
+
+    <!-- 计算志愿活动记录的总数 -->
+    <select id="count" resultType="Long">
+        SELECT COUNT(*) FROM volunteer
+    </select>
+
+    <!-- 根据志愿活动名称模糊查询志愿活动记录 -->
+    <select id="selectVolunteerByNameLike" parameterType="String" resultType="me.caryan.volunteerregistersys.entity.po.Volunteer">
+        SELECT * FROM volunteer WHERE volunteer_name LIKE CONCAT('%', #{volunteerName}, '%')
+    </select>
+
+    <!-- 查询所有的志愿活动记录 -->
+    <select id="selectAllVolunteer" resultType="me.caryan.volunteerregistersys.entity.po.Volunteer">
+        SELECT * FROM volunteer
+    </select>
+
+    <!-- 根据创建日期排序并查询志愿活动记录 -->
+    <select id="selectVolunteerOrderByCreateDate" resultType="me.caryan.volunteerregistersys.entity.po.Volunteer">
+        SELECT * FROM volunteer ORDER BY create_date DESC
+    </select>
+
+    <!-- 根据负责人名称查询志愿活动记录 -->
+    <select id="selectVolunteerByLeaderName" parameterType="String" resultType="me.caryan.volunteerregistersys.entity.po.Volunteer">
+        SELECT * FROM volunteer WHERE leader_name LIKE CONCAT('%', #{leaderName}, '%') OR leader_name =#{leaderName}
+    </select>
+
+    <select id="selectVolunteerByName" parameterType="String" resultType="me.caryan.volunteerregistersys.entity.po.Volunteer">
+        SELECT * FROM volunteer WHERE volunteer_name = #{volunteerName}
+    </select>
+
+</mapper>

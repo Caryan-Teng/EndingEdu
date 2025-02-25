@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Api(value = "岗位信息")
+@Api(tags = "岗位信息")
 public class Job {
     @ApiModelProperty(value = "职业id主键")
     @NotNull

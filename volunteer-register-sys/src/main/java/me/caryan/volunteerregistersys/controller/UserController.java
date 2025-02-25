@@ -8,10 +8,13 @@ import me.caryan.volunteerregistersys.entity.po.User;
 import me.caryan.volunteerregistersys.entity.response.ResultVo;
 import me.caryan.volunteerregistersys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Date;
 
+@Validated
 @RestController
 @Api(tags = "用户信息")
 public class UserController {

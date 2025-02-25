@@ -3,6 +3,7 @@ package me.caryan.volunteerregistersys.entity.po;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Api(tags = "用户信息")
+@Builder
 public class User {
     /**
      * 用户id主键
@@ -71,7 +73,7 @@ public class User {
     /**
      * 是否为支援负责人：0-否/1-是
      */
-    @ApiModelProperty(value = "是否为支援负责人：0-否/1-是")
+    @ApiModelProperty(value = "是否为志愿负责人：0-否/1-是")
     @NotNull(message = "是否为支援负责人不能为空")
     private Integer isLeader;
     /**
