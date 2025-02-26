@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.caryan.volunteerregistersys.dao.UserIsCheckedMapper">
+
+    <!-- 插入用户检查状态记录 -->
+    <insert id="insertUIC" parameterType="me.caryan.volunteerregistersys.entity.po.UserIsChecked">
+        INSERT INTO user_is_checked (id, user_id, volunteer_name, is_checked)
+        VALUES (#{id}, #{userId}, #{volunteerName}, #{isChecked})
+    </insert>
+
+    <!-- 根据用户ID和志愿者名称删除用户检查状态记录 -->
+    <delete id="deleteUICByUserIdAndVolunteerName" parameterType="me.caryan.volunteerregistersys.entity.request.UserIsCheckedVo">
+        DELETE FROM user_is_checked
+        WHERE user_id = #{userId}
+          AND volunteer_name = #{volunteerName}
+    </delete>
+
+    <!-- 根据用户ID和志愿者名称更新检查状态 -->
+    <update id="updateIsCheckedByUserIdAndVolunteerName" parameterType="me.caryan.volunteerregistersys.entity.request.UserIsCheckedVo">
+        UPDATE user_is_checked
+        SET is_checked = #{isChecked}
+        WHERE user_id = #{userId}
+          AND volunteer_name = #{volunteerName}
+    </update>
+
+    <!-- 根据志愿者名称选择用户检查状态记录 -->
+    <select id="selectUICByVolunteerName" resultType="me.caryan.volunteerregistersys.entity.po.UserIsChecked">
+        SELECT id, user_id, volunteer_name, is_checked
+        FROM user_is_checked
+        WHERE volunteer_name = #{volunteerName}
+    </select>
+
+    <!-- 根据用户ID选择用户检查状态记录 -->
+    <select id="selectUICByUserId" resultType="me.caryan.volunteerregistersys.entity.po.UserIsChecked">
+        SELECT id, user_id, volunteer_name, is_checked
+        FROM user_is_checked
+        WHERE user_id = #{userId}
+    </select>
+
+    <!-- 根据用户ID和志愿者名称选择用户检查状态记录 -->
+    <select id="selectUICByUserIdAndVolunteerName" resultType="me.caryan.volunteerregistersys.entity.po.UserIsChecked">
+        SELECT id, user_id, volunteer_name, is_checked
+        FROM user_is_checked
+        WHERE user_id = #{userId}
+          AND volunteer_name = #{volunteerName}
+    </select>
+
+</mapper>

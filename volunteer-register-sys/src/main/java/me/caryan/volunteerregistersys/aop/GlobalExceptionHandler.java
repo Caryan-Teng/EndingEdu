@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
+    /**
+     * 拦截器，拦截Spring400参数错误，返回以下响应体
+     * @param ex 被捕捉的异常
+     * @return 响应体
+     */
     @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResultVo<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
