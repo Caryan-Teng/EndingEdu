@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/volunteer/user")
+@RestController
 @Api(tags = "志愿活动报名")
 public class VolunteerRegisterController {
     @Autowired
@@ -22,7 +22,7 @@ public class VolunteerRegisterController {
     private UserIsCheckedService userIsCheckedService;
 
     @ApiOperation(value = "志愿者报名志愿活动(未审核）")
-    @PostMapping("/register")
+    @PostMapping("/volunteer/user/register")
     public ResultVo<UserIsChecked> registerVolunteer(@RequestBody UserIsCheckedVo userIsCheckedVo) {
         ResultVo<UserIsChecked> response = new ResultVo<>();
         Long userId = userIsCheckedVo.getUserId();

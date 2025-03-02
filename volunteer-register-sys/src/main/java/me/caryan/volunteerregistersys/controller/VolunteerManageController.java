@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.sql.Date;
 
 
-@RestController("/volunteer/leader")
+@RestController
 @Api(tags = "志愿活动管理")
 public class VolunteerManageController {
     @Autowired
@@ -25,7 +25,7 @@ public class VolunteerManageController {
     @Autowired
     private UserService userService;
     @ApiOperation(value = "创建志愿活动")
-    @PostMapping("/insert")
+    @PostMapping("/volunteer/leader/insert")
     public ResultVo<Volunteer> createVolunteer(@RequestBody @Valid CreateVolunteerVo newVolunteer){
         ResultVo<Volunteer> response = new ResultVo<>();
         if(volunteerService.selectVolunteerByName(newVolunteer.getVolunteerName())!=null){

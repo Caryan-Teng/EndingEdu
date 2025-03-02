@@ -2,7 +2,7 @@ package me.caryan.volunteerregistersys.dao;
 
 import me.caryan.volunteerregistersys.entity.po.UserIsChecked;
 import me.caryan.volunteerregistersys.entity.request.UserIsCheckedVo;
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

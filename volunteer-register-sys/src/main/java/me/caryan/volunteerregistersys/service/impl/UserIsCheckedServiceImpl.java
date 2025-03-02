@@ -11,10 +11,8 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-/**
- * @author Caryan
- * @date 2025/2/26 10:09
- */ public class UserIsCheckedServiceImpl implements UserIsCheckedService {
+
+public class UserIsCheckedServiceImpl implements UserIsCheckedService {
     @Autowired
     private UserIsCheckedMapper mapper;
 
@@ -26,9 +24,9 @@ import java.util.List;
      */
     @Override
     public Integer deleteUICByUserIdAndVolunteerName(UserIsCheckedVo userIsCheckedVo) {
-        if(mapper.selectUICByUserIdAndVolunteerName(userIsCheckedVo)==null){
+        if (mapper.selectUICByUserIdAndVolunteerName(userIsCheckedVo) == null) {
             return 0;
-        }else{
+        } else {
             return mapper.deleteUICByUserIdAndVolunteerName(userIsCheckedVo);
         }
     }
@@ -41,15 +39,10 @@ import java.util.List;
      */
     @Override
     public Integer insertUIC(UserIsCheckedVo userIsCheckedVo) {
-        if(mapper.selectUICByUserIdAndVolunteerName(userIsCheckedVo)==null){
-            UserIsChecked userIsChecked=new UserIsChecked().builder()
-                    .userId(userIsCheckedVo.getUserId())
-                    .volunteerName(userIsCheckedVo.getVolunteerName())
-                    .id(null)
-                    .isChecked(-1)
-                    .build();
+        if (mapper.selectUICByUserIdAndVolunteerName(userIsCheckedVo) == null) {
+            UserIsChecked userIsChecked = new UserIsChecked().builder().userId(userIsCheckedVo.getUserId()).volunteerName(userIsCheckedVo.getVolunteerName()).id(null).isChecked(-1).build();
             return mapper.insertUIC(userIsChecked);
-        }else{
+        } else {
             return 0;
         }
     }
@@ -62,9 +55,9 @@ import java.util.List;
      */
     @Override
     public List<UserIsChecked> selectUICByUserId(Long userId) {
-        if(mapper.selectUICByUserId(userId)!=null){
+        if (mapper.selectUICByUserId(userId) != null) {
             return mapper.selectUICByUserId(userId);
-        }else{
+        } else {
             return Collections.emptyList();
         }
     }
@@ -99,9 +92,9 @@ import java.util.List;
      */
     @Override
     public Integer updateIsCheckedByUserIdAndVolunteerName(UserIsCheckedVo userIsCheckedVo) {
-        if(mapper.selectUICByUserIdAndVolunteerName(userIsCheckedVo)!=null){
+        if (mapper.selectUICByUserIdAndVolunteerName(userIsCheckedVo) != null) {
             return mapper.updateIsCheckedByUserIdAndVolunteerName(userIsCheckedVo);
-        }else{
+        } else {
             return 0;
         }
     }

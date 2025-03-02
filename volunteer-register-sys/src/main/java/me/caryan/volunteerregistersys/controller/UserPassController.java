@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 
-@RestController("/register")
+@RestController
 @Api(tags = "用户验证码")
 public class UserPassController {
     @Autowired
     private UserPassService userPassService;
 
 
-    @PostMapping("/insertPass")
+    @PostMapping("/register/insertPass")
     @ApiOperation(value = "创建验证码")
     public ResultVo<UserPass> insertPass(@RequestBody String email) {
         if(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")){
@@ -43,7 +43,7 @@ public class UserPassController {
         }
         return resultVo;
     }
-    @PostMapping("/checkPass")
+    @PostMapping("/register/checkPass")
     @ApiOperation(value = "验证验证码")
     public ResultVo<String> checkPass(@RequestBody @Valid UserPassVo userPassVo){
         ResultVo<String> resultVo = new ResultVo<>();
