@@ -52,6 +52,11 @@ public class UserController {
         }
     }
 
+    /**
+     * 登录
+     * @param loginUserVo 登录的表单
+     * @return 查询到的用户信息，放到token里
+     */
     @PostMapping("/login")
     @ApiOperation(value = "用户登录")
     public ResultVo<User> loginUser(@RequestBody @Valid LoginUserVo loginUserVo) {
@@ -76,5 +81,4 @@ public class UserController {
             return response;
         }
     }
-
 }

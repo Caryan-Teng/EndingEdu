@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.caryan.volunteerregistersys.dao.VolunteerCreateLogMapper">
+
+    <!-- 插入志愿活动创建日志 -->
+    <insert id="insertVolunteerCreateLog" parameterType="me.caryan.volunteerregistersys.entity.po.VolunteerCreateLog">
+        INSERT INTO volunteer_create_log (leader_email, volunteer_name)
+        VALUES (#{leaderEmail}, #{volunteerName})
+    </insert>
+
+    <!-- 根据创建者邮箱查询志愿活动创建日志 -->
+    <select id="selectVolunteerCreateLogByLeaderEmail" parameterType="String" resultType="me.caryan.volunteerregistersys.entity.po.VolunteerCreateLog">
+        SELECT id, leader_email, volunteer_name
+        FROM volunteer_create_log
+        WHERE leader_email = #{leaderEmail}
+    </select>
+
+</mapper>

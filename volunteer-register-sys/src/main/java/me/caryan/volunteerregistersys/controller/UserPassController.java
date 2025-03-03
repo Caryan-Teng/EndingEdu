@@ -19,7 +19,11 @@ public class UserPassController {
     @Autowired
     private UserPassService userPassService;
 
-
+    /**
+     * 一个按钮，创建验证码
+     * @param email 注册的邮箱
+     * @return 验证码
+     */
     @PostMapping("/register/insertPass")
     @ApiOperation(value = "创建验证码")
     public ResultVo<UserPass> insertPass(@RequestBody String email) {
@@ -43,6 +47,12 @@ public class UserPassController {
         }
         return resultVo;
     }
+
+    /**
+     * 验证验证码
+     * @param userPassVo 用户邮箱和验证码
+     * @return message
+     */
     @PostMapping("/register/checkPass")
     @ApiOperation(value = "验证验证码")
     public ResultVo<String> checkPass(@RequestBody @Valid UserPassVo userPassVo){
