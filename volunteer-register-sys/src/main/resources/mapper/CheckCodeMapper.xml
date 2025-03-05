@@ -6,4 +6,30 @@
         INSERT INTO volunteer_check_code(user_email, volunteer_name, check_code, is_checked)
         VALUES (#{userEmail}, #{volunteerName}, #{checkCode}, #{isChecked})
     </insert>
+
+    <delete id="deleteCheckCodeByUserEmail">
+        DELETE
+        FROM volunteer_check_code
+        WHERE user_email = #{userEmail}
+    </delete>
+
+    <delete id="deleteCheckCodeByVolunteerName">
+        DELETE
+        FROM volunteer_check_code
+        WHERE volunteer_name = #{volunteerName}
+    </delete>
+
+    <select id="selectCheckCodeByUserEmail" resultType="me.caryan.volunteerregistersys.entity.po.VolunteerCheckCode">
+        SELECT user_email, volunteer_name, check_code, is_checked
+        FROM volunteer_check_code
+        WHERE user_email = #{userEmail}
+    </select>
+
+    <select id="selectCheckCodeByVolunteerName"
+            resultType="me.caryan.volunteerregistersys.entity.po.VolunteerCheckCode">
+        SELECT user_email, volunteer_name, check_code, is_checked
+        FROM volunteer_check_code
+        WHERE volunteer_name = #{volunteerName}
+    </select>
+
 </mapper>
