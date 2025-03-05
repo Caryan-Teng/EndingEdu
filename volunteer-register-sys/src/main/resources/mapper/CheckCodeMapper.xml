@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.caryan.volunteerregistersys.dao.CheckCodeMapper">
+
+    <insert id="insertCheckCode">
+        INSERT INTO volunteer_check_code(user_email, volunteer_name, check_code, is_checked)
+        VALUES (#{userEmail}, #{volunteerName}, #{checkCode}, #{isChecked})
+    </insert>
+</mapper>

@@ -5,12 +5,15 @@ import io.swagger.annotations.ApiOperation;
 import me.caryan.volunteerregistersys.entity.po.UserPass;
 import me.caryan.volunteerregistersys.entity.request.UserPassVo;
 import me.caryan.volunteerregistersys.entity.response.ResultVo;
+import me.caryan.volunteerregistersys.service.EmailPassSenderService;
 import me.caryan.volunteerregistersys.service.UserPassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 @RestController
@@ -18,6 +21,8 @@ import javax.validation.Valid;
 public class UserPassController {
     @Autowired
     private UserPassService userPassService;
+    @Autowired
+    private EmailPassSenderService emailPassSenderService;
 
     /**
      * 一个按钮，创建验证码
@@ -38,12 +43,36 @@ public class UserPassController {
             resultVo.setData(null);
         }else{
             String pass = userPassService.selectPassByEmail(email);
+            emailPassSenderService.sendEmail(email,pass);
+            Timer timer = new Timer();//定时器
+            TimerTask task = new TimerTask() {//定时任务
+                /**
+                 * The action to be performed by this timer task.
+                 */
+                @Override
+                public void run() {//定时任务内容
+                    try{
+                        if(email==null){
+                            throw new Exception();
+                        }
+                        Integer result = userPassService.deletePassByEmail(email);
+                        if(result==0){
+                            throw new Exception();
+                        }
+                    }catch (Exception e){
+                        System.out.println("验证码删除失败");
+                    }
+                }
+
+            };
+            timer.schedule(task,300000);//1000 = 1seconds
+
             UserPass userPass = new UserPass();
             userPass.setEmail(email);
             userPass.setPass(pass);
             resultVo.setCode(200);
             resultVo.setMessage("验证码创建成功");
-            resultVo.setData(userPass);
+            resultVo.setData(null);
         }
         return resultVo;
     }

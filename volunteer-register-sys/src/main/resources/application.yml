@@ -29,6 +29,19 @@ spring:
           username: root
           password: TJL123456.
           driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    #    port:
+    host: smtp.163.com
+    username: 15716273511@163.com
+    password: DMggH5gSGKYYhM7d
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enabled: true
+            required: false
+        debug: true
 
   profiles:
     include: define,xxl-job

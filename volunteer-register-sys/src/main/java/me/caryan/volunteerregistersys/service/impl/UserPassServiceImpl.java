@@ -43,7 +43,7 @@ public class UserPassServiceImpl implements UserPassService {
 
     @Override
     public Integer deletePassByEmail(String email) {
-        if (userMapper.selectUserByEmail(email) != null) {
+        if (userPassMapper.selectPassByEmail(email) != null) {
             return userPassMapper.deletePassByEmail(email);
         } else {
             return 0;

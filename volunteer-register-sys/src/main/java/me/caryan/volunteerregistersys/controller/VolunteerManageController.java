@@ -130,4 +130,38 @@ public class VolunteerManageController {
         }
         return response;
     }
+
+    /**
+     * 一个按钮，用于开启活动（将数据库中活动的is——begin调整为开启）
+     * @param beginVolunteer 需要开启的活动类
+     * @return 开启后的活动类
+     */
+    @ApiOperation(value = "开启志愿活动")
+    @PutMapping("/volunteer/leader/begin")
+    public ResultVo<Volunteer> beginVolunteer(@RequestBody @Valid Volunteer beginVolunteer){
+        ResultVo<Volunteer> response = new ResultVo<>();
+        if(volunteerService.selectVolunteerByName(beginVolunteer.getVolunteerName())==null){
+            response.setCode(500);
+            response.setMessage("该志愿活动不存在");
+            response.setData(null);
+        }else{
+            try{
+                Volunteer updatedVolunteer = volunteerService.selectVolunteerByName(beginVolunteer.getVolunteerName());
+                updatedVolunteer.setIsBegin(1);
+                Integer result = volunteerService.updateVolunteerByName(updatedVolunteer);
+                if(result!=1){
+                    throw new Exception();
+                }
+                response.setCode(200);
+                response.setMessage("开启成功");
+                response.setData(volunteerService.selectVolunteerByName(updatedVolunteer.getVolunteerName()));
+            }catch (Exception e){
+                System.out.println("开启失败");
+                response.setCode(500);
+                response.setMessage("开启失败");
+                response.setData(null);
+            }
+        }
+        return response;
+    }
 }
